@@ -51,11 +51,14 @@ export const DataProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
             id: c.id,
             name: c.name,
           }));
-          setCompanies(convertedCompanies);
-          if (convertedCompanies.length > 0 && !currentCompany) {
+        setCompanies(convertedCompanies);
+        if (convertedCompanies.length > 0) {
+          if (!currentCompany) {
             setCurrentCompany(convertedCompanies[0]);
           }
+          console.log('Loaded companies:', convertedCompanies);
         }
+      }
 
         // Load users (will be filtered by company later if company is selected)
         const { data: usersData } = await supabase.from('users').select('*').order('created_at', { ascending: false });
@@ -113,6 +116,7 @@ export const DataProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
             };
           });
           setProjects(projectsWithRelations);
+          console.log('Loaded projects:', projectsWithRelations.length);
         }
 
         // Load tasks
@@ -263,9 +267,11 @@ export const DataProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
           photos: [],
         };
         setProjects(prev => [...prev, newProject]);
+        console.log('Project added successfully:', newProject);
       }
     } catch (error) {
       console.error('Error adding project:', error);
+      alert('Failed to save project. Check console for details.');
     }
   };
 
