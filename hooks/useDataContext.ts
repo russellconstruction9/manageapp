@@ -275,7 +275,7 @@ export const DataProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
         title: taskData.title,
         description: taskData.description,
         project_id: taskData.projectId,
-        assignee_id: taskData.assigneeId,
+        assignee_id: taskData.assigneeId || null,
         due_date: taskData.dueDate.toISOString().split('T')[0],
         status: TaskStatus.ToDo,
       }).select().single();
