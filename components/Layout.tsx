@@ -5,7 +5,7 @@ import Sidebar from './Sidebar';
 import BottomNav from './BottomNav';
 import UserSwitcher from './UserSwitcher';
 import { Link } from 'react-router-dom';
-import { SccLogoIcon } from './icons/Iconsôme;
+import { SccLogoIcon } from './icons/Icons';
 import PWAFeatures from './PWAFeatures';
 
 interface LayoutProps {
